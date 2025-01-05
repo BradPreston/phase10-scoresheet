@@ -1,13 +1,17 @@
 class Phase10 {
+  players = [];
   constructor() {}
 
-  init() {
-    window.localStorage.setItem("players", JSON.stringify([]));
+  addPlayer(player) {
+    if (this.players.includes(player)) {
+      showErrorModal(`${this.name} is already in the game.`);
+      throw new Error(`${this.name} is already in the game.`);
+    }
+    this.players.push(player);
   }
 
   newGame() {
-    const playerList = JSON.parse(window.localStorage.getItem("players"));
-    if (playerList.length < 2) {
+    if (this.players.length < 2) {
       showErrorModal('Must have at least 2 players to start.');
       throw new Error('Must have at least 2 players to start.');
     }
@@ -19,21 +23,11 @@ class Phase10 {
 class Player {
   name;
   score;
-  constructor(name, score = 0) {
+  currentPhase;
+  constructor(name, score = 0, currentPhase = 1) {
     this.name = capitalizeFirstLetter(name);
     this.score = score;
-  }
-
-  addToGame() {
-    let playerList = JSON.parse(localStorage.getItem("players"));
-    if (!playerList) localStorage.setItem("players", JSON.stringify([]));
-    playerList = JSON.parse(localStorage.getItem("players"));
-    if (playerList.some(name => name === this.name)) {
-      showErrorModal(`${this.name} is already in the game.`);
-      throw new Error(`${this.name} is already in the game.`);
-    }
-    playerList.push(this.name);
-    localStorage.setItem('players', JSON.stringify(playerList));
+    this.currentPhase = currentPhase;
   }
 }
 
@@ -56,29 +50,43 @@ function showErrorModal(message) {
   });
 }
 
-function addPlayer() {
-  const playerList = document.getElementById("playerList");
-  const playerName = playerList.lastElementChild.value;
-  if (!playerName) {
+function getPlayerName() {
+  const newPlayerInput = document.getElementById("newPlayerInput");
+  
+  if (!newPlayerInput.value) {
     showErrorModal('Player name cannot be empty.');
     throw new Error('Player name cannot be empty.');
   }
-  const newPlayer = new Player(playerName);
-  newPlayer.addToGame();
-  playerList.appendChild(addNewPlayerInput());
+
+  return new Player(newPlayerInput.value);
 }
 
-function addNewPlayerInput() {
-  const input = document.createElement("input");
-  input.className = "newPlayerInput";
-  input.type = "text";
-  input.placeholder = "Player name";
-  return input;
+function appendPlayerToPlayersList(player) {
+  const playerList = document.getElementById("playerList");
+
+  const li = document.createElement('li');
+  li.className = 'playerList-player';
+  li.innerText = player.name;
+  playerList.appendChild(li);
+
+  newPlayerInput.value = null;
 }
 
 window.addEventListener("load", function() {
   const startGameButton = this.document.getElementById("startGame");
+  const addPlayerButton = this.document.getElementById("addPlayerButton");
+
   const game = new Phase10();
-  game.init();
-  startGameButton.addEventListener("click", game.newGame);
+
+  startGameButton.addEventListener("click", function() {
+    game.newGame();
+  });
+
+  addPlayerButton.addEventListener("click", function() {
+    const newPlayer = getPlayerName();
+    // add the player to the list of players
+    appendPlayerToPlayersList(newPlayer);
+    // add the player to the game
+    game.addPlayer(newPlayer);
+  });
 });
