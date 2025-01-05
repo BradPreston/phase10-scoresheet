@@ -8,17 +8,21 @@
 </head>
 <body>
   <main>
-    <h1>Phase 10 Scoresheet</h1>
-    <div>
-      <h2>Enter the players</h2>
-      <div class="playerList">
-        <div id="playerList">
-          <input class="newPlayerInput" type="text" placeholder="Player name">
+    <section id="gameSetup">
+      <h1>Phase 10 Scoresheet</h1>
+      <div>
+        <h2>Enter the players</h2>
+        <div class="playerList">
+          <div id="playerList">
+            <input class="newPlayerInput" type="text" placeholder="Player name">
+          </div>
+          <button id="addPlayerButton" onclick="addPlayer()">Add another player</button>
         </div>
-        <button id="addPlayerButton" onclick="addPlayer()">Add another player</button>
+        <button id="startGame">Start new game</button>
       </div>
-      <button id="startGame">Start new game</button>
-    </div>
+    </section>
+
+    <section id="gameScore"></section>
   </main>
   <dialog id="errorModal">
     <div>
