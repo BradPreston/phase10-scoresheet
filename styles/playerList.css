@@ -1,0 +1,29 @@
+.playerList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+#playerList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.playerList-player {
+  width: fit-content;
+  padding: 5px 15px;
+}
+
+.playerList-player:hover {
+  background: var(--blue);
+}
+
+.playerList-wrapper {
+  display: flex;
+  flex-direction: column;
+}

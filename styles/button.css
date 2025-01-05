@@ -1,0 +1,24 @@
+.button {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+  padding: 10px 15px;
+  transition: all .15s;
+}
+
+.button--primary {
+  background: var(--blue);
+}
+
+.button--primary:hover {
+  background: var(--teal);
+}
+
+.button--secondary {
+  background: var(--teal);
+}
+
+.button--secondary:hover {
+  background: var(--blue);
+}
