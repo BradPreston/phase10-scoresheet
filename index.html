@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 10</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Phase 10 Scoresheet</h1>
+    <div>
+      <h2>Enter the players</h2>
+      <div id="playerList">
+        <input class="newPlayerInput" type="text" placeholder="Player name">
+      </div>
+      <button id="addPlayerButton" onclick="addPlayer()">Add another player</button>
+    </div>
+  </main>
+  <dialog id="errorModal">
+    <div>
+      <p>&#10005;</p>
+      <p id="errorModalMessage"></p>
+      <button id="closeErrorModalButton">Okay</button>
+    </div>
+  </dialog>
+  <script src="scripts.js"></script>
+</body>
+</html>
