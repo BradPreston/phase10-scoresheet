@@ -11,10 +11,13 @@
     <h1>Phase 10 Scoresheet</h1>
     <div>
       <h2>Enter the players</h2>
-      <div id="playerList">
-        <input class="newPlayerInput" type="text" placeholder="Player name">
+      <div class="playerList">
+        <div id="playerList">
+          <input class="newPlayerInput" type="text" placeholder="Player name">
+        </div>
+        <button id="addPlayerButton" onclick="addPlayer()">Add another player</button>
       </div>
-      <button id="addPlayerButton" onclick="addPlayer()">Add another player</button>
+      <button id="startGame">Start new game</button>
     </div>
   </main>
   <dialog id="errorModal">
