@@ -79,7 +79,7 @@ function appendPlayerToPlayersList(player) {
   const playerList = document.getElementById("playerList");
 
   const li = document.createElement('li');
-  li.className = 'playerList-player';
+  li.className = 'button button--secondary playerList-player';
   li.dataset.name = player.name;
   li.innerHTML = `${player.name} &#10005;`;
   playerList.appendChild(li);
