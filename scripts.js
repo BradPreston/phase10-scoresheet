@@ -4,6 +4,16 @@ class Phase10 {
   init() {
     window.localStorage.setItem("players", JSON.stringify([]));
   }
+
+  newGame() {
+    const playerList = JSON.parse(window.localStorage.getItem("players"));
+    if (playerList.length < 2) {
+      showErrorModal('Must have at least 2 players to start.');
+      throw new Error('Must have at least 2 players to start.');
+    }
+    document.getElementById("gameSetup").style.display = "none";
+    document.getElementById("gameScore").style.display = "block";
+  }
 }
 
 class Player {
@@ -67,6 +77,8 @@ function addNewPlayerInput() {
 }
 
 window.addEventListener("load", function() {
+  const startGameButton = this.document.getElementById("startGame");
   const game = new Phase10();
   game.init();
+  startGameButton.addEventListener("click", game.newGame);
 });
