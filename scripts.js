@@ -10,6 +10,10 @@ class Phase10 {
     this.players.push(player);
   }
 
+  removePlayer(name) {
+    this.players = this.players.filter(p => p.name !== name);
+  }
+
   newGame() {
     if (this.players.length < 2) {
       showErrorModal('Must have at least 2 players to start.');
@@ -66,7 +70,8 @@ function appendPlayerToPlayersList(player) {
 
   const li = document.createElement('li');
   li.className = 'playerList-player';
-  li.innerText = player.name;
+  li.dataset.name = player.name;
+  li.innerHTML = `${player.name} &#10005;`;
   playerList.appendChild(li);
 
   newPlayerInput.value = null;
@@ -75,6 +80,7 @@ function appendPlayerToPlayersList(player) {
 window.addEventListener("load", function() {
   const startGameButton = this.document.getElementById("startGame");
   const addPlayerButton = this.document.getElementById("addPlayerButton");
+  const playerList = document.getElementById("playerList");
 
   const game = new Phase10();
 
@@ -89,4 +95,12 @@ window.addEventListener("load", function() {
     // add the player to the game
     game.addPlayer(newPlayer);
   });
+
+  playerList.addEventListener("click", function(event) {
+    const player = event.target.closest('.playerList-player');
+    if (!player) return;
+    game.removePlayer(player.dataset.name);
+    playerList.removeChild(player);
+    game.players.forEach(player => console.log(player.name))
+  })
 });
