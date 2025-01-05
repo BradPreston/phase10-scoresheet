@@ -1,3 +1,181 @@
-.newPlayerInput {
+:root {
+  --blue: #2E5077;
+  --white: #F6F4F0;
+  --teal: #4DA1A9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+#gameScore {
+  display: none;
+}
+
+body {
+  background: var(--white);
+  font-family: arial, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  color: var(--blue);
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  padding: 10px 0;
+}
+
+h2 {
+  font-size: 2.5rem;
+  padding: 8px 0;
+}
+
+input,
+button,
+li,
+p {
+  font-size: 1.6rem;
+  color: var(--blue);
+}
+
+.playerList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+#playerList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.playerList-player {
+  font-size: 1.6rem;
+  background: var(--teal);
+  color: var(--white);
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.playerList-player:hover {
+  background: var(--blue);
+}
+
+.playerList-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#newPlayerInput {
+  background: #FFFFFF;
+}
+
+#addPlayerButton {
+  background: var(--blue);
+  color: var(--white);
+  transition: all .15s;
+}
+
+#addPlayerButton:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+#newPlayerInput,
+#addPlayerButton {
   text-transform: capitalize;
+  width: 100%;
+  border: 1px solid var(--blue);
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+.startGame-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#startGame {
+  background: var(--teal);
+  border: 1px solid var(--teal);
+  color: var(--white);
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 100%;
+  transition: all .15s;
+}
+
+#startGame:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.errorModal {
+  position: fixed;
+  min-width: 100vw;
+  min-height: 100vh;
+  place-content: center;
+  top: 0;
+  left: 0;
+  background: rgba(246, 244, 240, .85);
+  backdrop-filter: blur(5px);
+}
+
+.errorModalIcon {
+  width: fit-content;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  font-size: 4rem;
+  border: 2px solid var(--blue);
+  border-radius: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 4px;
+}
+
+.errorModalContent {
+  background: #FFFFFF;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid var(--blue);
+  border-radius: 10px;
+  max-width: 280px;
+}
+
+#errorModalMessage {
+  margin: 10px 0;
+  text-align: center;
+}
+
+#closeErrorModalButton {
+  width: fit-content;
+  margin: 0 auto;
+  background: var(--blue);
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+  padding: 5px 15px;
+  transition: all .15s;
+}
+
+#closeErrorModalButton:hover {
+  background: var(--teal);
 }

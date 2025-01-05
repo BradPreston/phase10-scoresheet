@@ -8,25 +8,28 @@
 </head>
 <body>
   <main>
+    <h1>Phase 10 Scoresheet</h1>
     <section id="gameSetup">
-      <h1>Phase 10 Scoresheet</h1>
-      <div>
+      <div class="playerList">
         <h2>Enter the players</h2>
-        <div class="playerList">
-          <div id="playerList">
-            <input class="newPlayerInput" type="text" placeholder="Player name">
-          </div>
-          <button id="addPlayerButton" onclick="addPlayer()">Add another player</button>
+        <div class="playerList-wrapper">
+          <ul id="playerList">
+          </ul>
+          <input id="newPlayerInput" type="text" placeholder="Player name">
+          <button id="addPlayerButton">&plus; Add player</button>
         </div>
-        <button id="startGame">Start new game</button>
+        <div class="startGame-wrapper">
+          <h2>Ready to begin?</h2>
+          <button id="startGame">Start game</button>
+        </div>
       </div>
     </section>
 
     <section id="gameScore"></section>
   </main>
-  <dialog id="errorModal">
-    <div>
-      <p>&#10005;</p>
+  <dialog id="errorModal" class="errorModal">
+    <div class="errorModalContent">
+      <p class="errorModalIcon">&#10005;</p>
       <p id="errorModalMessage"></p>
       <button id="closeErrorModalButton">Okay</button>
     </div>
