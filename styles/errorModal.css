@@ -3,11 +3,12 @@
   min-width: 100vw;
   min-height: 100vh;
   place-content: center;
-  top: 0;
-  left: 0;
   background: rgba(246, 244, 240, .85);
   backdrop-filter: blur(5px);
+  left: 0;
+  top: 0;
 }
+
 
 .errorModalIcon {
   width: fit-content;
@@ -31,9 +32,47 @@
   border: 2px solid var(--blue);
   border-radius: 10px;
   max-width: 280px;
+  margin: 0 auto;
 }
 
 #errorModalMessage {
   margin: 10px 0;
   text-align: center;
 }
+
+dialog {
+  transition: all .3s ease-in-out allow-discrete;
+
+  &[open] .errorModalContent {
+    animation: bounce-in .3s ease-in-out forwards;
+  }
+}
+
+dialog .errorModalContent {
+  animation: bounce-out .3s ease-in-out forwards;
+}
+
+@keyframes bounce-in {
+  0%{
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-out {
+  0%{
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(0);
+  }
+}
+
