@@ -3,9 +3,9 @@ class Phase10 {
   constructor() {}
 
   addPlayer(player) {
-    if (this.players.includes(player)) {
-      showErrorModal(`${this.name} is already in the game.`);
-      throw new Error(`${this.name} is already in the game.`);
+    if (this.players.some(p => p.name === player.name)) {
+      showErrorModal(`${player.name} is already in the game.`);
+      throw new Error(`${player.name} is already in the game.`);
     }
     this.players.push(player);
   }
@@ -47,10 +47,20 @@ function showErrorModal(message) {
   const closeErrorModalButton = document.getElementById("closeErrorModalButton");
 
   errorModal.showModal();
+  errorModal.style.display = "grid";
   errorModalMessage.innerText = message;
 
   closeErrorModalButton.addEventListener('click', function() {
+    errorModal.style.display = "none";
     errorModal.close();
+  });
+
+  errorModal.addEventListener("click", function(event) {
+    const modalWrapper = event.target.closest(".errorModalContent");
+    if (!modalWrapper) {
+      errorModal.style.display = "none";
+      errorModal.close();
+    }
   });
 }
 
@@ -90,10 +100,9 @@ window.addEventListener("load", function() {
 
   addPlayerButton.addEventListener("click", function() {
     const newPlayer = getPlayerName();
-    // add the player to the list of players
-    appendPlayerToPlayersList(newPlayer);
-    // add the player to the game
     game.addPlayer(newPlayer);
+    // Important to load after game.addPlayer to prevent the player's name from being added to the list
+    appendPlayerToPlayersList(newPlayer);
   });
 
   playerList.addEventListener("click", function(event) {
