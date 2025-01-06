@@ -32,6 +32,12 @@ class Phase10 {
     document.getElementById("gameSetup").style.display = "none";
     document.getElementById("gameScore").style.display = "block";
   }
+
+  reset() {
+    localStorage.removeItem("playerList");
+    document.getElementById("gameSetup").style.display = "block";
+    document.getElementById("gameScore").style.display = "none";
+  }
 }
 
 class Player {
@@ -133,4 +139,6 @@ window.addEventListener("load", function() {
     playerList.removeChild(player);
     game.players.forEach(player => console.log(player.name))
   })
+
+  this.window.resetGame = () => game.reset();
 });
