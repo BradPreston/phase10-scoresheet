@@ -17,6 +17,7 @@
 .playerList-player {
   width: fit-content;
   padding: 5px 15px;
+  cursor: pointer;
 }
 
 .playerList-player:hover {
