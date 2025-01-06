@@ -2,6 +2,15 @@ class Phase10 {
   players = [];
   constructor() {}
 
+  init() {
+    const playersListStorage = JSON.parse(localStorage.getItem("playerList"));
+    if (playersListStorage) {
+      this.players = playersListStorage;
+      document.getElementById("gameSetup").style.display = "none";
+      document.getElementById("gameScore").style.display = "block";
+    }
+  }
+
   addPlayer(player) {
     if (this.players.some(p => p.name === player.name)) {
       showErrorModal(`${player.name} is already in the game.`);
@@ -19,6 +28,7 @@ class Phase10 {
       showErrorModal('Must have at least 2 players to start.');
       throw new Error('Must have at least 2 players to start.');
     }
+    localStorage.setItem("playerList", JSON.stringify(this.players));
     document.getElementById("gameSetup").style.display = "none";
     document.getElementById("gameScore").style.display = "block";
   }
@@ -94,6 +104,7 @@ window.addEventListener("load", function() {
   const playerList = document.getElementById("playerList");
 
   const game = new Phase10();
+  game.init();
 
   startGameButton.addEventListener("click", function() {
     game.newGame();
