@@ -90,6 +90,7 @@ function appendPlayerToPlayersList(player) {
 window.addEventListener("load", function() {
   const startGameButton = this.document.getElementById("startGame");
   const addPlayerButton = this.document.getElementById("addPlayerButton");
+  const addPlayerForm = this.document.getElementById("addPlayerForm");
   const playerList = document.getElementById("playerList");
 
   const game = new Phase10();
@@ -98,7 +99,16 @@ window.addEventListener("load", function() {
     game.newGame();
   });
 
-  addPlayerButton.addEventListener("click", function() {
+  addPlayerForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const newPlayer = getPlayerName();
+    game.addPlayer(newPlayer);
+    // Important to load after game.addPlayer to prevent the player's name from being added to the list
+    appendPlayerToPlayersList(newPlayer);
+  });
+
+  addPlayerButton.addEventListener("click", function(event) {
+    event.preventDefault();
     const newPlayer = getPlayerName();
     game.addPlayer(newPlayer);
     // Important to load after game.addPlayer to prevent the player's name from being added to the list
