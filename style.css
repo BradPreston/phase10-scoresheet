@@ -1,10 +1,13 @@
 @import 'styles/base.css';
 @import 'styles/button.css';
-@import 'styles/errorModal.css';
+@import 'styles/modal.css';
 @import 'styles/playerList.css';
+@import 'styles/gameHeader.css';
 
 #gameScore {
   display: none;
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 #newPlayerInput {

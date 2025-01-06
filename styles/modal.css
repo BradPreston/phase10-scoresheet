@@ -1,4 +1,4 @@
-.errorModal {
+.modal {
   position: fixed;
   min-width: 100vw;
   min-height: 100vh;
@@ -9,8 +9,7 @@
   top: 0;
 }
 
-
-.errorModalIcon {
+.modalIcon {
   width: fit-content;
   aspect-ratio: 1/1;
   margin: 0 auto;
@@ -23,7 +22,7 @@
   padding: 6px 4px;
 }
 
-.errorModalContent {
+.modalContent {
   background: #FFFFFF;
   padding: 20px;
   display: flex;
@@ -32,10 +31,21 @@
   border: 2px solid var(--blue);
   border-radius: 10px;
   max-width: 280px;
+  min-width: 230px;
+  width: 100%;
   margin: 0 auto;
+  text-align: center;
 }
 
-#errorModalMessage {
+.modalButtonList {
+  display: flex;
+  width: 100%;
+  min-width: 230px;
+  gap: 20px;
+}
+
+#errorModalMessage,
+#confirmModalMessage {
   margin: 10px 0;
   text-align: center;
 }
@@ -43,12 +53,12 @@
 dialog {
   transition: all .3s ease-in-out allow-discrete;
 
-  &[open] .errorModalContent {
+  &[open] .modalContent {
     animation: bounce-in .3s ease-in-out forwards;
   }
 }
 
-dialog .errorModalContent {
+dialog .modalContent {
   animation: bounce-out .3s ease-in-out forwards;
 }
 
