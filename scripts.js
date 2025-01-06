@@ -72,10 +72,38 @@ function showErrorModal(message) {
   });
 
   errorModal.addEventListener("click", function(event) {
-    const modalWrapper = event.target.closest(".errorModalContent");
+    const modalWrapper = event.target.closest(".modalContent");
     if (!modalWrapper) {
       errorModal.style.display = "none";
       errorModal.close();
+    }
+  });
+}
+
+function showConfirmModal(game) {
+  const confirmModal = document.getElementById("confirmModal");
+  const confirmActionModalButton = document.getElementById("confirmActionModalButton");
+  const closeConfirmModalButton = document.getElementById("closeConfirmModalButton");
+
+  confirmModal.showModal();
+  confirmModal.style.display = "grid";
+
+  closeConfirmModalButton.addEventListener('click', function() {
+    confirmModal.style.display = "none";
+    confirmModal.close();
+  });
+
+  confirmActionModalButton.addEventListener("click", function() {
+    confirmModal.style.display = "none";
+    confirmModal.close();
+    game.reset();
+  });
+
+  confirmModal.addEventListener("click", function(event) {
+    const modalWrapper = event.target.closest(".modalContent");
+    if (!modalWrapper) {
+      confirmModal.style.display = "none";
+      confirmModal.close();
     }
   });
 }
@@ -141,5 +169,7 @@ window.addEventListener("load", function() {
     game.players.forEach(player => console.log(player.name))
   });
 
-  resetGameButton.addEventListener("click", game.reset);
+  resetGameButton.addEventListener("click", function() {
+    showConfirmModal(game);
+  });
 });

@@ -27,13 +27,28 @@
       </div>
     </section>
 
-    <section id="gameScore"></section>
+    <section id="gameScore">
+      <div class="gameHeader">
+        <button class="button button--primary" id="restartGame">Reset game</button>
+        <button class="button button--secondary" id="editPlayers">Edit Players</button>
+      </div>
+    </section>
   </main>
-  <dialog id="errorModal" class="errorModal">
-    <div class="errorModalContent">
-      <p class="errorModalIcon">&#10005;</p>
+  <dialog id="errorModal" class="modal">
+    <div class="modalContent">
+      <p class="modalIcon">&#10005;</p>
       <p id="errorModalMessage"></p>
       <button class="button button--primary" id="closeErrorModalButton">Okay</button>
+    </div>
+  </dialog>
+  <dialog id="confirmModal" class="modal">
+    <div class="modalContent">
+      <p class="modalIcon">&#33;</p>
+      <p id="confirmModalMessage">Are you sure?</p>
+      <div class="modalButtonList">
+        <button class="button button--secondary" id="confirmActionModalButton">Confirm</button>
+        <button class="button button--primary" id="closeConfirmModalButton">Cancel</button>
+      </div>
     </div>
   </dialog>
   <script src="scripts.js"></script>
