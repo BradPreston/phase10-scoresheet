@@ -35,8 +35,8 @@ class Phase10 {
 
   reset() {
     localStorage.removeItem("playerList");
-    document.getElementById("gameSetup").style.display = "block";
-    document.getElementById("gameScore").style.display = "none";
+    this.players = [];
+    window.location.reload();
   }
 }
 
@@ -108,6 +108,7 @@ window.addEventListener("load", function() {
   const addPlayerButton = this.document.getElementById("addPlayerButton");
   const addPlayerForm = this.document.getElementById("addPlayerForm");
   const playerList = document.getElementById("playerList");
+  const resetGameButton = this.document.getElementById("restartGame");
 
   const game = new Phase10();
   game.init();
@@ -138,7 +139,7 @@ window.addEventListener("load", function() {
     game.removePlayer(player.dataset.name);
     playerList.removeChild(player);
     game.players.forEach(player => console.log(player.name))
-  })
+  });
 
-  this.window.resetGame = () => game.reset();
+  resetGameButton.addEventListener("click", game.reset);
 });
